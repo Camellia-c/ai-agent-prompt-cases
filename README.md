@@ -472,3 +472,132 @@ Agent Workflow 设计
 6. 增加多轮对话 Prompt 评测案例。
 7. 增加 Guardrails / Safety Prompt 案例。
 8. 将案例整理成作品集说明，用于 AI 评测岗位面试表达。
+
+---
+
+# AI Agent Skill Practice
+
+## 项目简介
+
+本项目用于练习 AI Agent / Codex Skill 的设计与实战。
+
+项目目标不是单纯写 Prompt，而是把高频 AI 评测任务沉淀成可复用的 Skill，包括：
+
+- AI 学习资料整理；
+- Prompt 质量评测；
+- AI 回答质量评测；
+- Agent 任务执行流程；
+- Codex Excel 自动计算场景。
+
+通过这些案例，可以理解 Prompt 和 Skill 的区别：
+
+- Prompt 更偏一次性指令；
+- Skill 更像一套可复用的任务能力包；
+- Skill 需要包含适用场景、输入格式、执行流程、输出结构和质量检查标准。
+
+## 项目结构
+
+```text
+ai-agent-prompt-cases/
+├── skills/
+│   ├── ai_learning_note_skill.md
+│   ├── prompt_evaluation_skill.md
+│   ├── ai_answer_evaluation_skill.md
+│   └── agent_task_execution_skill.md
+│
+├── cases/
+│   ├── skill_case_01_ai_learning_note.md
+│   ├── skill_case_02_prompt_evaluation.md
+│   ├── skill_case_03_answer_evaluation.md
+│   ├── skill_case_04_agent_task_execution.md
+│   └── skill_case_05_codex_excel_renewal_analysis.md
+│
+└── .agents/
+    └── skills/
+        └── codex-excel-renewal-analysis/
+            ├── SKILL.md
+            ├── scripts/
+            │   └── calculate_renewal_risk.py
+            └── references/
+                └── sample_student_data_schema.md
+Skill 说明
+Skill	文件	作用
+AI 学习资料整理 Skill	skills/ai_learning_note_skill.md	将 AI 概念资料整理成学习笔记和面试表达
+Prompt 质量评测 Skill	skills/prompt_evaluation_skill.md	对比和评估 Prompt 的质量
+AI 回答质量评测 Skill	skills/ai_answer_evaluation_skill.md	评估模型回答的相关性、准确性、完整性、清晰度、安全性和可操作性
+Agent 任务执行 Skill	skills/agent_task_execution_skill.md	模拟 Agent 的任务理解、工具判断、执行计划和状态更新
+Codex Excel 续费风险分析 Skill	.agents/skills/codex-excel-renewal-analysis/SKILL.md	调用 Python 脚本处理 Excel，计算学生续费风险并生成报告
+案例说明
+Case	对应 Skill	场景
+Case 01	AI 学习资料整理	将 RAG 整理成 AI 评测岗位学习笔记
+Case 02	Prompt 质量评测	对比两个 RAG 学习 Prompt 的优劣
+Case 03	AI 回答质量评测	评估一个关于工具调用的模型回答
+Case 04	Agent 任务执行	判断 OpenAI API 价格查询任务是否需要工具
+Case 05	Codex Excel 续费风险分析	根据学生数据 Excel 计算续费风险分并生成结果表
+Codex Excel Skill 示例
+
+Codex Excel 续费风险分析 Skill 用于模拟一个真实业务场景：
+
+班主任或运营人员需要根据学生学习数据，识别高风险学生，并安排优先跟进。
+
+输入 Excel 字段包括：
+
+student_name
+attendance_rate
+homework_rate
+interaction_score
+parent_reply_rate
+renewal_intent
+complaint_count
+last_contact_days
+
+脚本会输出：
+
+renewal_risk_result.xlsx
+renewal_risk_report.md
+
+运行方式示例：
+
+python .agents/skills/codex-excel-renewal-analysis/scripts/calculate_renewal_risk.py sample_student_data.xlsx renewal_risk_result.xlsx renewal_risk_report.md
+我对 Skill 的理解
+
+Skill 不是简单的 Prompt 模板，而是把一类重复任务沉淀成可复用的执行规范。
+
+一个完整 Skill 通常包括：
+
+适用场景；
+用户目标；
+输入格式；
+执行流程；
+标准输出结构；
+输出要求；
+示例输入输出；
+质量检查清单。
+
+其中：
+
+标准输出结构负责规定“输出长什么样”；
+质量检查清单负责判断“输出质量合不合格”。
+
+这能让任务执行从“凭感觉生成”变成“按流程、按标准、可复用、可检查”。
+
+和 AI 评测岗位的关系
+
+这个项目对应 AI 评测岗位中的几个核心能力：
+
+能拆解用户需求；
+能设计评测维度；
+能判断模型回答质量；
+能识别幻觉、遗漏、跑题和不安全输出；
+能把任务流程标准化；
+能设计可复用的评测模板；
+能结合脚本完成数据处理和结果输出。
+面试表达
+
+我做过一个 AI Agent Skill 实战项目，主要是把高频 AI 评测任务沉淀成可复用的 Skill。
+
+项目里包括 AI 学习资料整理、Prompt 质量评测、AI 回答质量评测、Agent 任务执行流程，以及一个 Codex Excel 自动计算案例。
+
+其中 Codex Excel 案例会读取学生学习数据 Excel，计算续费风险分，划分高、中、低风险等级，并输出新的 Excel 结果表和 Markdown 分析报告。
+
+这个项目让我理解到，Prompt 更偏一次性指令，而 Skill 更像一套可复用的任务能力包。对于 AI 评测岗位来说，这种结构化能力很重要，因为评测工作本身就需要稳定标准、可复现流程和清晰的质量判断维度。
